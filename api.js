@@ -65,7 +65,7 @@ function save_session(data) {
 	});
 }
 
-function async load_last_session() {
+async function load_last_session() {
 	var data = await bridge.send('VKWebAppStorageGet', {
 		keys: ["user_data"]
 	});
