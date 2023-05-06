@@ -70,7 +70,7 @@ async function load_last_session() {
 		keys: ["user_data"]
 	});
 	data = data.keys[0].value;
-	unityI.SendMessage("")
+	unityI.SendMessage("Loader and Saver", "Load", data);
 }
 
 var game_name = "<название_игры>";
