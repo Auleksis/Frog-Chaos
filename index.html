@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="TemplateData/style.css">
 	<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
 	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-	<script src="api.js"></script>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -105,10 +104,12 @@
 
       var script = document.createElement("script");
       script.src = loaderUrl;
+	  var unityI = null;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
+				unityI = unityInstance;
                 loadingBar.style.display = "none";
                 fullscreenButton.onclick = () => {
                   unityInstance.SetFullscreen(1);
@@ -121,5 +122,7 @@
       document.body.appendChild(script);
 
     </script>
+	
+	<script src="api.js"></script>
   </body>
 </html>

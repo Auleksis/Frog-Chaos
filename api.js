@@ -16,6 +16,36 @@ function post_wall_ending(text) {
 	});
 }
 
+function post_history_ending(orig_text) {
+	var text_len = 30;
+	var text = [];
+	var cnt = 0;
+	for(var i = 0; i < orig_text.length; i++) {
+		if(cnt < text_len) {
+			cnt++;
+			text[i] = orig_text[i];
+			if(text[i] == '\n') cnt = 0;
+			continue;
+		}
+		while(orig_text[i] != ' ') i--;
+		text[i] = '\n';
+		cnt = 0;
+	}
+	text = text.join('');
+	bridge.send('VKWebAppShowStoryBox', {
+		background_type: 'image',
+		url : 'https://sun9-10.userapi.com/impg/05kJIvEG4Pv-iCuuFEuiBf8CzFAeNqHazgP21A/oRSVtrI0QMY.jpg?size=2560x1707&quality=96&sign=22a2978ac32540fdec8805484b842651&type=album',
+		"stickers": [{
+			"sticker_type": "native",
+			"sticker": {
+				"action_type": "text",
+				"action": {"text": text, "style": "poster", "alignment": "right"},
+				"transform": {"relation_width": 1}
+			}
+		}]
+	})
+}
+
 function invite_friends() {
 	VK.callMethod("showInviteBox");
 }
@@ -28,26 +58,24 @@ function share_link(text) {
 	});
 }
 
-async function save_session(data) {
-	var data = await bridge.send('VKWebAppStorageSet', {
+function save_session(data) {
+	bridge.send('VKWebAppStorageSet', {
 		"key": "user_data",
 		"value": data
 	});
-	if(data.result) {
-		console.log("SUCCESS");
-	}
 }
-async function load_last_session() {
+
+function async load_last_session() {
 	var data = await bridge.send('VKWebAppStorageGet', {
 		keys: ["user_data"]
 	});
-	return data.keys[0].value;
+	data = data[0].value;
+	unityI.SendMessage("")
 }
 
 var game_name = "<название_игры>";
 
 
-// window.onclick = async () => {
-// 	await save_session("Example Data; Sample Data.");
-// 	console.log(await load_last_session());
-// }
+window.onclick = async () => {
+	post_history_ending("Интересная история! Правда я ничего не смыслю в лягушках... Только в жабах. Вы видели когда-нибудь жаб? Это довольно интересные создания.")
+}
