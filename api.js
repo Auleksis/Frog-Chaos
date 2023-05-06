@@ -69,7 +69,7 @@ async function load_last_session() {
 	var data = await bridge.send('VKWebAppStorageGet', {
 		keys: ["user_data"]
 	});
-	data = data[0].value;
+	data = data.keys[0].value;
 	unityI.SendMessage("")
 }
 
