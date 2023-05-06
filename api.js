@@ -74,5 +74,3 @@ async function load_last_session() {
 }
 
 var game_name = "<название_игры>";
-
-
