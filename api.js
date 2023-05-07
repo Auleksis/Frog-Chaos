@@ -11,7 +11,7 @@ bridge.subscribe((e) => console.log(e));
 
 function post_wall_ending(text) {
 	text = `Я сыграл в ${game_name} и получил интересную историю!\n\n" + text + "\n\nПопробуйте и вы! <ссылка>`
-	VK.api("wall.post", {"message": text, "v":"5.131", "attachments": "photo367794961_457270153"}, data => {
+	VK.api("wall.post", {"message": text, "v":"5.131", "attachments": "photo367794961_457270318"}, data => {
 		console.log(data);
 	});
 }
@@ -34,7 +34,7 @@ function post_history_ending(orig_text) {
 	text = text.join('');
 	bridge.send('VKWebAppShowStoryBox', {
 		background_type: 'image',
-		url : 'https://sun9-10.userapi.com/impg/05kJIvEG4Pv-iCuuFEuiBf8CzFAeNqHazgP21A/oRSVtrI0QMY.jpg?size=2560x1707&quality=96&sign=22a2978ac32540fdec8805484b842651&type=album',
+		url : 'https://sun9-79.userapi.com/impg/xbea8LuReLx6cOSE1cD_-0_13pwwhRCG36eapQ/f-k2OXxW4Vg.jpg?size=1080x1920&quality=96&sign=ec5ae4b6ded33a4d7834a8bda5b0a84e&type=album',
 		"stickers": [{
 			"sticker_type": "native",
 			"sticker": {
