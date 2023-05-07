@@ -70,7 +70,7 @@ async function load_last_session() {
 		keys: ["user_data"]
 	});
 	data = data.keys[0].value;
-	unityI.SendMessage("Loader and Saver", "Load", data);
+	unityI.SendMessage("Room", "LoadSession", data);
 }
 
-var game_name = "<название_игры>";
+var game_name = "Frog Chaos";
